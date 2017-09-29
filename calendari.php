@@ -50,7 +50,8 @@ $diaSemana=date("w",mktime(0,0,0,$mes,1,$año));
 						echo "<td> $dia </td>";
 						$dia++;
 					}
-
+					
+					//si el resto de dividir con 7 es 0, saltará una fila y continuará escribiendo abajo
 					if ($i % 7 == 0){
 							echo "<tr></tr>";
 					}
