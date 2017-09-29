@@ -1,6 +1,7 @@
 <?php
 $diaActual = date("j");
 $mes = date("n");
+$mesLetra = date ("F");
 $año = date("Y");
 $totalDiasMes = date("t");
 $diaSemana=date("w",mktime(0,0,0,$mes,1,$año));
@@ -9,12 +10,13 @@ $diaSemana=date("w",mktime(0,0,0,$mes,1,$año));
 	<style>
 		td{border: 1px solid black; width: 50px;height: 50px;background-color: #66ccff;}
 		#actual {background-color: red;}
+		table {margin: 0 auto;}
 	</style>
 	<body>
 		
 	<table>
-		<th><?php echo "Mes: " + date("M") . "  Año: ".$año  ?></th>
 		<tr>
+			<?php  echo "<caption>    $mesLetra &nbsp;  $año</caption>" ?>;
 			<th>Lun</th><th>Mar</th><th>Mie</th><th>Jue</th>
 			<th>Vie</th><th>Sab</th><th>Dom</th>
 		</tr>
@@ -25,10 +27,16 @@ $diaSemana=date("w",mktime(0,0,0,$mes,1,$año));
 					if ($i == $diaSemana)
 					{
 						echo "<td> $dia </td>";
+						$dia++;
 					}
-					else if ($i < $diaSemana || $i > $totalDiasMes)
+					else if ($i < $diaSemana || $i > $totalDiasMes+4)
 					{
 						 echo "<td> &nbsp; </td>";
+					}
+					else if ($dia == $diaActual)
+					{
+						echo "<td id='actual'>$dia</td>";
+						$dia++;
 					}
 					else 
 					{
